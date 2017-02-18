@@ -22,7 +22,8 @@ public class Lab4SentenceRestController {
     String getSentence() {
         return
                 getWord("LAB-4-SUBJECT") + " "
-                        + getWord("LAB-4-VERB") + "."
+                + getWord("LAB-4-VERB") + " "
+                        + getWord("LAB-4-ADJECTIVE") + "."
                 ;
     }
 
