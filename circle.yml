@@ -5,8 +5,8 @@ machine:
     - docker
 
 dependencies:
-  pre:
-    - sudo apt-get install docker-compose
+#  pre:
+#    - sudo apt-get install docker-compose
   post:
     - docker-compose up -d
 
