@@ -1,5 +1,6 @@
 package com.vbashur.eureka;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,12 +12,23 @@ public class Lab4RestController {
     @Value("${words}")
     private String words;
 
+//    @Autowired
+    private RedisDatasource redisDatasource;
+
     @RequestMapping("/")
     @ResponseBody
     public String getWord() {
         String[] wordArray = words.split(",");
         int i = (int) Math.round(Math.random() * (wordArray.length - 1));
         return wordArray[i];
+//        return getWordFromRedis();
+    }
+
+    private String getWordFromRedis() {
+        String[] wordArray = words.split(",");
+        int i = (int) Math.round(Math.random() * (wordArray.length - 1));
+        return redisDatasource.getJedis().get(wordArray[i]);
+
     }
 
 }

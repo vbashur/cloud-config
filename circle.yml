@@ -1,0 +1,27 @@
+machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - sudo apt-get install docker-compose
+  post:
+    - docker-compose up -d
+
+deployment:
+  hub:
+    branch: /.*/
+    commands:
+      - docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
+
+      - docker tag cloudconfig_lab-4-eureka-server $DOCKER_HUB_USER_ID/lab-4-eureka-server:$CIRCLE_SHA1
+      - docker tag cloudconfig_lab-4-eureka-server $DOCKER_HUB_USER_ID/lab-4-eureka-server:latest
+      - docker push $DOCKER_HUB_USER_ID/lab-4-eureka-server:$CIRCLE_SHA1
+      - docker push $DOCKER_HUB_USER_ID/lab-4-eureka-server:latest
+
+      - docker tag cloudconfig_lab-4-subject $DOCKER_HUB_USER_ID/lab-4-subject:$CIRCLE_SHA1
+      - docker tag cloudconfig_lab-4-subject $DOCKER_HUB_USER_ID/lab-4-subject:latest
+      - docker push $DOCKER_HUB_USER_ID/lab-4-subject:$CIRCLE_SHA1
+      - docker push $DOCKER_HUB_USER_ID/lab-4-subject:latest

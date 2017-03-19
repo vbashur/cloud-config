@@ -1,12 +1,17 @@
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://localhost:8010/eureka/
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.18.0.2:8010/eureka/
+#spring:
+#  cloud:
+#    config:
+#      uri: http://localhost:8001
 
 words: I,You,He,She,It
 server:
   port: ${PORT:${SERVER_PORT:0}}
+
+spring:
+  redis:
+    host: localhost
+    port: 6379

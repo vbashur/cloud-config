@@ -1,0 +1,18 @@
+version: '2'
+services:
+  lab-4-eureka-server:
+    build: ./lab-4-eureka-server/
+    restart: always
+    ports:
+      - 8010:8010
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+  lab-4-subject:
+    build: ./lab-4-subject/
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"

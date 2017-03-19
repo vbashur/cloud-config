@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>01-boot-demo</name>
+	<name>lab-4-eureka-client-solution</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
