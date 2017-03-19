@@ -13,6 +13,7 @@ dependencies:
 #  pre:
 #    - sudo apt-get install docker-compose
   post:
+    - mvn clean install
     - docker-compose up -d
 
 deployment:
